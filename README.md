@@ -1,6 +1,6 @@
 # Data Science Challenge for Shopify 2022 Internship
 
-Question 1: <br>
+## Question 1: 
 Please see the q1.ipynb Jupyter notebook for my program and detailed answers.
 
 A brief summary of my answers: <br>
@@ -8,11 +8,11 @@ a) The naive AOV calculation takes the mean of all orders, and there are several
 b) Median Order Value <br>
 c) $284.00 <br>
 
-Question 2: <br>
+## Question 2:
 q2.txt contains the plain text versions of the answers below with proper indenting. <br>
 (Browser used: Firefox)
 
-a. How many orders were shipped by Speedy Express in total?
+### a. How many orders were shipped by Speedy Express in total?
 
 SELECT COUNT(*) AS SpeedyOrders <br>
 FROM Orders, Shippers <br>
@@ -22,7 +22,7 @@ Answer:
 54
 
 
-b. What is the last name of the employee with the most orders?
+### b. What is the last name of the employee with the most orders?
 
 SELECT Employees.LastName  <br>
 FROM Employees, <br>
@@ -36,7 +36,7 @@ Answer:
 Peacock
 
 
-c. What product was ordered the most by customers in Germany?
+### c. What product was ordered the most by customers in Germany?
 
 SELECT Products.ProductName
 FROM Products,  <br>

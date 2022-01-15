@@ -14,9 +14,9 @@ q2.txt contains the plain text versions of the answers below. <br>
 
 ### a. How many orders were shipped by Speedy Express in total?
 ```
-SELECT COUNT(*) AS SpeedyOrders <br>
-FROM Orders, Shippers <br>
-WHERE Orders.ShipperID = Shippers.ShipperID AND Shippers.ShipperName = 'Speedy Express'; <br>
+SELECT COUNT(*) AS SpeedyOrders
+FROM Orders, Shippers
+WHERE Orders.ShipperID = Shippers.ShipperID AND Shippers.ShipperName = 'Speedy Express';
 ```
 Answer:
 54
@@ -24,13 +24,13 @@ Answer:
 
 ### b. What is the last name of the employee with the most orders?
 ```
-SELECT Employees.LastName  <br>
-FROM Employees, <br>
-	(SELECT Top 1 EmployeeID, COUNT(EmployeeID) AS EmployeeOrders <br>
-	FROM Orders <br>
-	GROUP BY EmployeeID <br>
-	ORDER BY COUNT(EmployeeID) DESC) AS MostOrders <br>
-WHERE Employees.EmployeeID = MostOrders.EmployeeID; <br>
+SELECT Employees.LastName  
+FROM Employees, 
+	(SELECT Top 1 EmployeeID, COUNT(EmployeeID) AS EmployeeOrders
+	FROM Orders
+	GROUP BY EmployeeID
+	ORDER BY COUNT(EmployeeID) DESC) AS MostOrders
+WHERE Employees.EmployeeID = MostOrders.EmployeeID;
 ```
 Answer:
 Peacock
@@ -39,16 +39,16 @@ Peacock
 ### c. What product was ordered the most by customers in Germany?
 ```
 SELECT Products.ProductName
-FROM Products,  <br>
-  (SELECT Top 1 OrderDetails.ProductID, SUM(OrderDetails.Quantity) AS ProductOccurence <br>
-  FROM OrderDetails, Customers, Orders, Products <br>
-  WHERE Orders.OrderID = OrderDetails.OrderID <br>
-      AND OrderDetails.ProductID = Products.ProductID <br>
-      AND Orders.CustomerID = Customers.CustomerID <br>
-      AND Customers.Country = 'Germany' <br>
-  GROUP BY OrderDetails.ProductID <br>
-  ORDER BY SUM(OrderDetails.Quantity) DESC) AS PopularItem <br>
-WHERE PopularItem.ProductID = Products.ProductID; <br>
+FROM Products, 
+  (SELECT Top 1 OrderDetails.ProductID, SUM(OrderDetails.Quantity) AS ProductOccurence
+  FROM OrderDetails, Customers, Orders, Products
+  WHERE Orders.OrderID = OrderDetails.OrderID
+      AND OrderDetails.ProductID = Products.ProductID
+      AND Orders.CustomerID = Customers.CustomerID
+      AND Customers.Country = 'Germany'
+  GROUP BY OrderDetails.ProductID
+  ORDER BY SUM(OrderDetails.Quantity) DESC) AS PopularItem 
+WHERE PopularItem.ProductID = Products.ProductID;
 ```
 Answer:
 Boston Crab Meat
